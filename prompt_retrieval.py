@@ -28,7 +28,7 @@ def prompt_retrieval(train_embs,test_embs,train_examples,eval_examples,return_st
     #Model selection
     if "llama" in args.model_name:
         if '7B' in args.model_name:
-            tokenizer_name = "/home/ubuntu/llama_models/7B_hf"
+            tokenizer_name = "models/llama-7b-hf"
         elif '13B' in args.model_name:
             tokenizer_name = "/home/ubuntu/llama_models/13B_hf"
         elif '65B' in args.model_name:
@@ -48,9 +48,13 @@ def prompt_retrieval(train_embs,test_embs,train_examples,eval_examples,return_st
         if '7B' in args.model_name:
             tokenizer_name = 'EleutherAI/gpt-neox-20b'
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
-    
-    elif 'gpt' in args.model_name:
-        tokenizer_name = "gpt2"
+
+    elif args.model_name == 'gpt-neo':
+        tokenizer_name = "models/gpt-neo-1.3B"
+        tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
+
+    elif args.model_name == 'gpt-j-6B':
+        tokenizer_name = "models/gpt-j-6B"
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
 

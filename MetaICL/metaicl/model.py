@@ -75,31 +75,32 @@ class MetaICLModel(object):
         self.model.to(self.device)
 
     def load(self):
+        prefix = ""
         model_name = self.args.model_name
         if "llama" in self.args.model_name:
             if '7B' in self.args.model_name:
-                model_name = "/home/ubuntu/llama_models/7B_hf"
+                model_name = "models/llama-7b-hf"
             elif '13B' in self.args.model_name:
                 model_name = "/home/ubuntu/llama_models/13B_hf"
             from transformers import LlamaForCausalLM
-            model = LlamaForCausalLM.from_pretrained(model_name, device_map='auto')
+            model = LlamaForCausalLM.from_pretrained(prefix+model_name, device_map='auto')
 
         elif 'falcon' in self.args.model_name:
             if '7B' in self.args.model_name:
                 model_name = "tiiuae/falcon-7b"
             elif '40B' in self.args.model_name:
                 model_name = "tiiuae/falcon-40b"
-            model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True, device_map='auto')
+            model = AutoModelForCausalLM.from_pretrained(prefix+model_name, trust_remote_code=True, device_map='auto')
 
         elif 'mosaic' in self.args.model_name:
             if '7B' in self.args.model_name:
                 model_name = 'mosaicml/mpt-7b'
-            model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True, device_map='auto')
+            model = AutoModelForCausalLM.from_pretrained(prefix+model_name, trust_remote_code=True, device_map='auto')
 
         elif 'gpt' in self.args.model_name:
 
             if self.args.model_name == 'gpt-neo':
-                model_name = "EleutherAI/gpt-neo-1.3B"
+                model_name = "models/gpt-neo-1.3B"
 
             elif self.args.model_name == 'gpt-neo2':
                 model_name = "EleutherAI/gpt-neo-2.7B"
@@ -108,10 +109,11 @@ class MetaICLModel(object):
                 model_name = "EleutherAI/gpt-neox-20b"
 
             else:
-                model_name = 'EleutherAI/gpt-j-6B'
+                model_name = 'models/gpt-j-6B'
+
             
-            model = AutoModelForCausalLM.from_pretrained(model_name, device_map='auto')
-        self.model_name = model_name
+            model = AutoModelForCausalLM.from_pretrained(prefix+model_name, device_map='auto')
+        self.model_name = prefix+model_name
         self.model = model
 
     def save(self, step):

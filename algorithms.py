@@ -227,7 +227,7 @@ def cluster(embeddings,select_num, examples, flag_idx = None, thres=False, rever
     num_clusters = select_num
 
     # Perform kmean clustering if no model is given
-    if clustering_model is  None:
+    if clustering_model is None:
         num_clusters = select_num
         clustering_model = KMeans(n_clusters=num_clusters, random_state=seed)
         clustering_model.fit(corpus_embeddings)

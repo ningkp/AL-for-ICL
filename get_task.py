@@ -227,6 +227,7 @@ def process_gsm_examples(examples):
 def get_task(args):
     task_name = args.task_name
     data_cache_dir = args.data_cache_dir
+    print(f"data_cache_dir: {data_cache_dir}")
     #print("New prompt")
     if task_name=='mnli':
         if False: #os.path.isfile(os.path.join(args.output_dir,f'train_examples_seed_{args.seed}.json')) and \

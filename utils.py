@@ -17,7 +17,7 @@ import numpy as np
 
 def calculate_sentence_transformer_embedding(text_to_encode,args):
     num = len(text_to_encode)
-    emb_model = SentenceTransformer(args.embedding_model)
+    emb_model = SentenceTransformer(args.embedding_model, cache_folder="models/")
     embeddings = []
     bar = tqdm(range(0,num,20),desc='calculate embeddings')
     for i in range(0,num,20):

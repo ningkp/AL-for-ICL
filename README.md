@@ -1,8 +1,4 @@
-# AdaICL: Which Examples to Annotate for In-Context Learning? Towards Effective and Efficient Selection
-
-In this work, we investigate an active learning approach for ICL, where there is a limited budget for annotating examples. We propose a model-adaptive optimization-free algorithm, termed AdaICL, which identifies examples that the model is uncertain about, and performs semantic diversity-based example selection. Diversity-based sampling improves overall effectiveness, while uncertainty sampling improves budget efficiency and helps the LLM learn new information. Moreover, AdaICL poses its sampling strategy as a Maximum Coverage problem, that dynamically adapts based on the model’s feedback and can be approximately solved via greedy algorithms. 
-![AdaICL algorithm.](assets/AdaICL_alg.pdf "AdaICL algorithm.")
-
+# Active Learning for In-context Learning
 
 
 ## Installation

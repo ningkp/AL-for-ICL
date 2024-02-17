@@ -37,10 +37,12 @@ class MetaICLData(object):
 
         self.tensorized_inputs = None
         self.metadata = None
+
+        print(tokenizer_name)
         
         if "llama" in tokenizer_name:
             if '7B' in tokenizer_name:
-                tokenizer_name = "/home/ubuntu/llama_models/7B_hf"
+                tokenizer_name = "models/llama-7b-hf"
             elif '13B' in tokenizer_name:
                 tokenizer_name = "/home/ubuntu/llama_models/13B_hf"
             from transformers import LlamaTokenizer
@@ -59,9 +61,17 @@ class MetaICLData(object):
                 tokenizer_name = 'EleutherAI/gpt-neox-20b'
             self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
+        elif 'gpt-neo' in tokenizer_name:
+            tokenizer_name = "models/gpt-neo-1.3B"
+            self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, use_fast=False, legacy=False)
+
+        elif 'gpt-j-6B' in tokenizer_name:
+            tokenizer_name = "models/gpt-j-6B"
+            self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, use_fast=False, legacy = False)
         
         else:
-
+            tokenizer_name = "models/gpt-neo-1.3B"
+            # tokenizer_name = "models/gpt-j-6B"
             self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
     def __len__(self):

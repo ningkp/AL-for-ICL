@@ -125,10 +125,10 @@ if __name__=='__main__':
 
     if args.task_name in ['mnli','rte','sst5','mrpc','dbpedia_14','hellaswag','ag_news', 'trec', 'amazon', 'ethos', 'sst2']:
         
-        if 'gpt' in args.model_name:
-            tokenizer_name = 'gpt2'
-        else:
-            tokenizer_name = args.model_name
+        # if 'gpt' in args.model_name:
+        #     tokenizer_name = 'gpt2'
+        # else:
+        tokenizer_name = args.model_name
 
         data_module = MetaICLData(method="direct", max_length=1024, max_length_per_example=300, tokenizer_name=tokenizer_name)
         
