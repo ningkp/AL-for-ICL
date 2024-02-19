@@ -46,7 +46,7 @@ parser.add_argument('--trust',action='store_true')
 parser.add_argument('--init_size',default=10,type=int) 
 parser.add_argument('--sample_k',action='store_true')
 parser.add_argument('--evaluate_calibration',action='store_true')
-parser.add_argument('--phases',default=2,type=int) 
+parser.add_argument('--phases',default=1,type=int)
 
 ##Method
 parser.add_argument('--ada_icl_plus',action='store_true')

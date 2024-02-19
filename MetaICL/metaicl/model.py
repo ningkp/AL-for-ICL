@@ -99,7 +99,7 @@ class MetaICLModel(object):
 
         elif 'gpt' in self.args.model_name:
 
-            if self.args.model_name == 'gpt-neo':
+            if self.args.model_name == 'gpt-neo-1.3B':
                 model_name = "models/gpt-neo-1.3B"
 
             elif self.args.model_name == 'gpt-neo2':

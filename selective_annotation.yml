@@ -1,4 +1,4 @@
-name: selective_annotation_adaicl
+name: ICL
 channels:
   - defaults
   - conda-forge

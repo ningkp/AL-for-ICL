@@ -49,7 +49,7 @@ def prompt_retrieval(train_embs,test_embs,train_examples,eval_examples,return_st
             tokenizer_name = 'EleutherAI/gpt-neox-20b'
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
-    elif args.model_name == 'gpt-neo':
+    elif args.model_name == 'gpt-neo-1.3B':
         tokenizer_name = "models/gpt-neo-1.3B"
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
