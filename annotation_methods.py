@@ -60,6 +60,9 @@ def selective_annotation_single_phase(args,**kwargs):
         train_examples = kwargs['train_examples']
         selected_indices = range(len(train_examples))
 
+    elif args.selective_annotation_method=='none':
+        selected_indices = []
+
     elif args.selective_annotation_method=='fast_votek':
         
         phase = 0
@@ -307,9 +310,15 @@ def selective_annotation_adaptive_phases(args,**kwargs):
             for i in selected_indices_new:
                 pool_idx.remove(i)
             selected_indices += selected_indices_new
-            
 
-    if args.selective_annotation_method=='votek':
+    elif args.selective_annotation_method=='all':
+        train_examples = kwargs['train_examples']
+        selected_indices = range(len(train_examples))
+
+    elif args.selective_annotation_method=='none':
+        selected_indices = []
+
+    elif args.selective_annotation_method=='votek':
 
         annotation_size_original = args.annotation_size
         selected_indices = init_ind
@@ -688,12 +697,13 @@ def selective_annotation_adaptive_phases(args,**kwargs):
             phase += 1
         args.phases = phase
 
-    if len(selected_indices) < args.annotation_size + init_size:
+    # 其他方法通过随机做补全, none除外
+    if len(selected_indices) < args.annotation_size + init_size and args.selective_annotation_method != 'none':
         rest_num = args.annotation_size + init_size - len(selected_indices)
         selected_indices += random.sample(pool_idx, rest_num)
 
 
-    if args.selective_annotation_method != 'all':
+    if args.selective_annotation_method != 'all' and args.selective_annotation_method != 'none':
         print("Selected total: ", len(selected_indices))
         assert  len(selected_indices) == args.annotation_size + init_size
 
