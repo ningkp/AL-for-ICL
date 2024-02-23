@@ -313,7 +313,7 @@ def selective_annotation_adaptive_phases(args,**kwargs):
 
     elif args.selective_annotation_method=='all':
         train_examples = kwargs['train_examples']
-        selected_indices = range(len(train_examples))
+        selected_indices = list(range(len(train_examples)))
 
     elif args.selective_annotation_method=='none':
         selected_indices = []

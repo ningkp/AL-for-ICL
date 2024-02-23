@@ -13,7 +13,7 @@ dataset=(sst2 rte mrpc mnli amazon trec ag_news)
 for s in 0 
 do
     printf "%6s\n" $e >> $aggregated_result_file
-    for t in $(seq 0 0)
+    for t in $(seq 6 6)
     do
 
         for m in $(seq 0 1)
